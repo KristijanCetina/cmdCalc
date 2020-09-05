@@ -9,3 +9,9 @@
 ```bash
 $make
 ```
+
+Usage:
+
+```bash
+./cmdCalc "<expression>"
+```
