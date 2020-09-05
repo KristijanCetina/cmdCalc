@@ -23,14 +23,14 @@ string infixToPostfix(string s)
 	std::stack<char> st;
 	st.push('N');
 	int stringLenght = s.length();
-	string ns;
+	string postfixString;
 	for (int i = 0; i < stringLenght; i++)
 	{
 		// If the scanned character is an operand, add it to output string.
 		if ((s[i] >= '0' && s[i] <= '9') || (s[i] >= 'A' && s[i] <= 'Z'))
 		{
-			ns += s[i];
-			ns += " ";
+			postfixString += s[i];
+			postfixString += " ";
 		}
 		// If the scanned character is an ‘(‘, push it to the stack.
 		else if (s[i] == '(')
@@ -45,8 +45,8 @@ string infixToPostfix(string s)
 			{
 				char c = st.top();
 				st.pop();
-				ns += c;
-				ns += " ";
+				postfixString += c;
+				postfixString += " ";
 			}
 			if (st.top() == '(')
 			{
@@ -62,8 +62,8 @@ string infixToPostfix(string s)
 			{
 				char c = st.top();
 				st.pop();
-				ns += c;
-				ns += " ";
+				postfixString += c;
+				postfixString += " ";
 			}
 			st.push(s[i]);
 		}
@@ -73,12 +73,12 @@ string infixToPostfix(string s)
 	{
 		char c = st.top();
 		st.pop();
-		ns += c;
-		ns += " ";
+		postfixString += c;
+		postfixString += " ";
 	}
 
-	cout << "\npostfix notation: " << ns << "\n";
-	return ns;
+	cout << "\npostfix notation: " << postfixString << "\n";
+	return postfixString;
 }
 
 void calculatePostfix(std::string expression)
@@ -141,9 +141,9 @@ void calculatePostfix(std::string expression)
 
 int main()
 {
-	// string exp = "a+b*(c^d-e)^(f+g*h)-i";
-	string exp = "(1+2)^3";
-	cout << "for " << exp << " ";
-	calculatePostfix(infixToPostfix(exp));
+	string infixExpression;
+	cout << "unesi izraz: \n";
+	cin >> infixExpression;
+	calculatePostfix(infixToPostfix(infixExpression));
 	return 0;
 }

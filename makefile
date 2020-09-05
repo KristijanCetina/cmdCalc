@@ -1,13 +1,6 @@
 .PHONY: all clean run
 .DEFAULT_GOAL := run
 
-ifeq ($(CXX),g++)
-    @echo OK je
-else
-    CXX = clang++
-endif
-
-# CXX = clang++
 OUTPUT = cmdCalc.out
 CXXFLAGS = -O3 -std=c++17 -o $(OUTPUT)
 FILES =  calc.cpp
