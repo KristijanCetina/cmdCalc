@@ -2,6 +2,7 @@
 #include <stack>
 #include <cmath>
 
+
 using namespace std;
 
 //Function to return precedence of operators
@@ -139,11 +140,22 @@ void calculatePostfix(std::string expression)
 	cout << "Result: " << myStack.top() << endl;
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	string infixExpression;
-	cout << "unesi izraz: \n";
-	cin >> infixExpression;
+	if (argc == 1)
+	{
+		cout << "unesi izraz: \n";
+		getline(cin, infixExpression);
+	}
+	else
+	{
+		infixExpression = (string)argv[1];
+	}
+
+	infixExpression.erase(remove(infixExpression.begin(), infixExpression.end(), ' '), infixExpression.end());
+	cout << infixExpression << "\n";
+
 	calculatePostfix(infixToPostfix(infixExpression));
 	return 0;
 }
