@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 #include <cmath>
+#include <algorithm>
 
 
 using namespace std;
@@ -154,7 +155,6 @@ int main(int argc, char **argv)
 	}
 
 	infixExpression.erase(remove(infixExpression.begin(), infixExpression.end(), ' '), infixExpression.end());
-	cout << infixExpression << "\n";
 
 	calculatePostfix(infixToPostfix(infixExpression));
 	return 0;
