@@ -1,8 +1,8 @@
 #include <iostream>
 #include <stack>
 #include <cmath>
+#include <sstream>
 #include <algorithm>
-
 
 using namespace std;
 
@@ -83,11 +83,11 @@ string infixToPostfix(string s)
 	return postfixString;
 }
 
-void calculatePostfix(std::string expression)
+double calculatePostfix(std::string expression)
 {
 	int num = 0;
 	//char expression[50];
-	stack<int> myStack;
+	stack<double> myStack;
 
 	for (int i = 0; i < 50 && expression[i] != '\0'; i++)
 	{
@@ -108,11 +108,11 @@ void calculatePostfix(std::string expression)
 		{
 			if (expression[i] == '+' || expression[i] == '-' || expression[i] == '*' || expression[i] == '/' || expression[i] == '^')
 			{
-				int op2 = myStack.top();
+				double op2 = myStack.top();
 				myStack.pop();
-				int op1 = myStack.top();
+				double op1 = myStack.top();
 				myStack.pop();
-				int res;
+				double res;
 
 				switch (expression[i])
 				{
@@ -139,9 +139,10 @@ void calculatePostfix(std::string expression)
 	}
 
 	cout << "Result: " << myStack.top() << endl;
+	return myStack.top();
 }
 
-int main(int argc, char **argv)
+int main(int argc, char** argv)
 {
 	string infixExpression;
 	if (argc == 1)
