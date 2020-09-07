@@ -2,7 +2,7 @@
 .DEFAULT_GOAL := run
 
 OUTPUT = cmdCalc.out
-CXXFLAGS = -O3 -std=c++17 -o $(OUTPUT)
+CXXFLAGS = -O3 -std=c++17 -Wall -Wextra -o $(OUTPUT)
 FILES =  calc.cpp
 HEADERS = 
 
@@ -14,3 +14,4 @@ run: $(OUTPUT)
 
 clean:
 	@$(RM) *.out
+	@$(RM) calc
